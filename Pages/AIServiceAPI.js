@@ -28,9 +28,9 @@ export class AIServiceAPI {
         expect(consistentCount / responses.length).toBeGreaterThanOrEqual(Perf_Consistency_limit);
     }
     // Ici j'évalue la réponse AI
-    async submitRating(rating) {
+    async submitRating(userInput, rating) {
         const response = await this.request.post(SaaS_RATING_API_URL, {
-            data: { input: USER_INPUT, rating }
+            data: { input: userInput, rating }
         });
         expect(response.status()).toBe(200);
         return response;
